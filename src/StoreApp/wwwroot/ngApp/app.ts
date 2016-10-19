@@ -13,6 +13,12 @@ namespace StoreApp {
                 controller: StoreApp.Controllers.HomeController,
                 controllerAs: 'controller'
             })
+            .state('edit', {
+                url: '/edit/:id',
+                templateUrl: '/ngApp/views/edit.html',
+                controller: StoreApp.Controllers.EditController,
+                controllerAs: 'controller'
+            })
             .state('about', {
                 url: '/about',
                 templateUrl: '/ngApp/views/about.html',

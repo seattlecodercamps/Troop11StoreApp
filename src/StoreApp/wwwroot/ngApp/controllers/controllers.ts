@@ -1,14 +1,30 @@
 namespace StoreApp.Controllers {
 
     export class HomeController {
-        public message = 'Hello from the home page!';
-        public movies;
+        public products;
+        public newProduct;
 
-        constructor(movieService:StoreApp.Services.MovieService) {
-            this.movies = movieService.listMovies();
+        public add() {
+            this.productService.save(this.newProduct);
+        }
+
+        constructor(private productService:StoreApp.Services.ProductService) {
+            this.products = productService.listProducts();
         }
     }
 
+
+    export class EditController {
+        private productToEdit;
+
+        constructor(
+            private productService: StoreApp.Services.ProductService,
+            private $stateParams: ng.ui.IStateParamsService
+        ) {
+            let id = $stateParams['id'];
+            this.productToEdit = productService.get(id);
+        }
+    }
 
 
     export class AboutController {
